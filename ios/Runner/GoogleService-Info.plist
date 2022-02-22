@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>992415908433-urd3qsa90tuu97dip4m9ir1hjps1v10m.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.992415908433-urd3qsa90tuu97dip4m9ir1hjps1v10m</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCjs2p3MwC5uCK4Uhk0Dl2PxOZwvizOqLY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>992415908433</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.kanbe.highandlow</string>
+	<key>PROJECT_ID</key>
+	<string>airpodsaccelerationsensor</string>
+	<key>STORAGE_BUCKET</key>
+	<string>airpodsaccelerationsensor.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:992415908433:ios:3f3603b7318ac3bfe56e70</string>
+	<key>ADMOB_APP_ID</key>
+	<string>ca-app-pub-3155724310732667~8388786019</string>
+</dict>
+</plist>
