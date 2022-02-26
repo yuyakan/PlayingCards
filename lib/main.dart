@@ -29,8 +29,8 @@ class InterstitialAd {
   Future<void> load() async => await admob.InterstitialAd.load(
         adUnitId: Platform.isAndroid
             // ? 'ca-app-pub-3940256099942544/1033173712'
-            ? 'ca-app-pub-3155724310732667/8836682038'
-            : "ca-app-pub-3155724310732667/6969066599",
+            ? 'ca-app-pub-'
+            : "ca-app-pub-",
         request: const admob.AdRequest(),
         adLoadCallback: admob.InterstitialAdLoadCallback(
           onAdLoaded: (final admob.InterstitialAd interstitialAd) {
