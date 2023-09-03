@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "992415908433",
+    "project_id": "airpodsaccelerationsensor",
+    "storage_bucket": "airpodsaccelerationsensor.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:992415908433:android:9f5cf4131595035ce56e70",
+        "android_client_info": {
+          "package_name": "com.kanbe.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "992415908433-n1pagmugjblpg17o27fg4ms9iugc03j2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqb2pr2MlAFHKw9udR2BDbsOHYe6aMdlo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "992415908433-n1pagmugjblpg17o27fg4ms9iugc03j2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "992415908433-dhvd15ckdhh9tde2b4gi36icmhkri6h2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kanbe.AirpodsAccelerator"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:992415908433:android:90f006d5d78ea8cfe56e70",
+        "android_client_info": {
+          "package_name": "com.kanbe.high_and_low"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "992415908433-n1pagmugjblpg17o27fg4ms9iugc03j2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqb2pr2MlAFHKw9udR2BDbsOHYe6aMdlo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "992415908433-n1pagmugjblpg17o27fg4ms9iugc03j2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "992415908433-dhvd15ckdhh9tde2b4gi36icmhkri6h2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kanbe.AirpodsAccelerator"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
