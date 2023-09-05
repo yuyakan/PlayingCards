@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart' as admob;
-import 'package:high_and_low/InterstialAd.dart';
-import 'package:high_and_low/PlayingCardsPage/PlayingCards.dart';
+import 'package:high_and_low/Ad/InterstitialAd.dart';
+import 'package:high_and_low/PlayingCardsPage/PlayingCardsView.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
