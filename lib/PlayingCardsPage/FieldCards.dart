@@ -1,3 +1,5 @@
+import 'package:high_and_low/constants.dart';
+
 class FieldCards {
   var _cards = [];
 
@@ -15,7 +17,7 @@ class FieldCards {
 
   String topCard() {
     if (_cards.isEmpty) {
-      return "white_card.png";
+      return EMPTY_CARD;
     }
     var mark = "D";
     switch ((_cards.last ~/ 13) + 1) {
@@ -36,6 +38,6 @@ class FieldCards {
         break;
     }
     var number = _cards.last % 13 + 1;
-    return "$mark$number.png";
+    return "img/cards/$mark$number.png";
   }
 }
