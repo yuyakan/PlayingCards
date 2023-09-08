@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:high_and_low/PlayingCardsPage/Provider/CardsDeckProvider.dart';
+import 'package:high_and_low/PlayingCardsPage/Provider/GameStateProvider.dart';
 import 'package:high_and_low/constants.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class GameFieldWidget extends StatefulWidget {
-  final String cardImage;
-  final bool isEmptyCardsDeck;
-
-  GameFieldWidget({required this.cardImage, required this.isEmptyCardsDeck});
+class GameFieldWidget extends HookConsumerWidget {
   @override
-  _GameFieldState createState() => _GameFieldState();
-}
-
-class _GameFieldState extends State<GameFieldWidget> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final _cardImageState = ref.watch(cardImageProvider);
+    final _cardsDeckState = ref.watch(cardsDeckProvider);
     final Size size = MediaQuery.of(context).size;
     return Row(
       children: [
@@ -22,7 +18,7 @@ class _GameFieldState extends State<GameFieldWidget> {
             width: size.width * 0.25,
           ),
           Visibility(
-            visible: !widget.isEmptyCardsDeck,
+            visible: !_cardsDeckState.isEmpty,
             maintainSize: true,
             maintainState: true,
             maintainAnimation: true,
@@ -41,7 +37,7 @@ class _GameFieldState extends State<GameFieldWidget> {
             width: size.width * 0.25,
           ),
           Image.asset(
-            widget.cardImage,
+            _cardImageState,
             width: size.width * 0.25,
           ),
         ]),
