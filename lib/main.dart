@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart' as admob;
 import 'package:high_and_low/Ad/InterstitialAd.dart';
 import 'package:high_and_low/PlayingCardsPage/PlayingCardsView/PlayingCardsView.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,7 +14,7 @@ Future<void> main() async {
   await admob.MobileAds.instance.initialize();
   await InterstitialAd.instance.load();
 
-  runApp(const MyApp());
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const PlayingCards(title: 'Playing cards'),
+      home: PlayingCards(),
     );
   }
 }
