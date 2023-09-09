@@ -1,4 +1,5 @@
 import 'package:high_and_low/Ad/InterstitialAd.dart';
+import 'package:high_and_low/Dialog/ShowDialog.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'ShowAdByResetProvider.g.dart';
@@ -15,7 +16,9 @@ class ShowAdByReset extends _$ShowAdByReset {
     if (state > 1) {
       _showInterstitialAd();
       state = 0;
+      return;
     }
+    showDialog();
   }
 
   void _addTimesOfReset() {
