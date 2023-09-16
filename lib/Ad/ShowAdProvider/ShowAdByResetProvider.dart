@@ -1,5 +1,5 @@
 import 'package:high_and_low/Ad/InterstitialAd.dart';
-import 'package:high_and_low/Dialog/ShowDialog.dart';
+import 'package:high_and_low/ReviewDialog/ShowDialog.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'ShowAdByResetProvider.g.dart';
