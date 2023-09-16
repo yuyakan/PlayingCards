@@ -1,3 +1,4 @@
+import 'package:high_and_low/PlayingCardsPage/Card.dart';
 import 'package:high_and_low/constants.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -30,25 +31,7 @@ class FieldCards extends _$FieldCards {
     if (state.isEmpty) {
       return EMPTY_CARD;
     }
-    var mark = "D";
-    switch ((state.last ~/ 13) + 1) {
-      case 1:
-        mark = "D";
-        break;
-      case 2:
-        mark = "H";
-        break;
-      case 3:
-        mark = "K";
-        break;
-      case 4:
-        mark = "S";
-        break;
-      case 5:
-        mark = "JOKER";
-        break;
-    }
-    var number = state.last % 13 + 1;
-    return "img/cards/$mark$number.png";
+    Card card = Card(state.last);
+    return "img/cards/${card.mark()}${card.number()}.png";
   }
 }
