@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:high_and_low/PlayingCardsPage/PlayingCardsView/GameFieldWidget.dart';
-import 'package:high_and_low/PlayingCardsPage/PlayingCardsView/GameFieldWidget/LeftSideWidget.dart';
-import 'package:high_and_low/PlayingCardsPage/PlayingCardsView/GameFieldWidget/RightSideWidget.dart';
+import 'package:high_and_low/PlayingCardsPage/View/GameFieldWidget.dart';
+import 'package:high_and_low/PlayingCardsPage/View/GameFieldWidget/LeftSideWidget.dart';
+import 'package:high_and_low/PlayingCardsPage/View/GameFieldWidget/RightSideWidget.dart';
 import 'package:high_and_low/constants.dart';
 
 class PlayingCards extends StatelessWidget {
