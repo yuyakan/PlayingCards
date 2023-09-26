@@ -1,7 +1,7 @@
-import 'package:high_and_low/PlayingCardsPage/Provider/CardsDeckProvider.dart';
-import 'package:high_and_low/PlayingCardsPage/Provider/FieldCardsProvider.dart';
-import 'package:high_and_low/PlayingCardsPage/Provider/GameStateProvider.dart';
-import 'package:high_and_low/PlayingCardsPage/Provider/TimesOfBackProvider.dart';
+import 'package:high_and_low/PlayingCardsPage/Model/Provider/CardsDeckProvider.dart';
+import 'package:high_and_low/PlayingCardsPage/Model/Provider/FieldCardsProvider.dart';
+import 'package:high_and_low/PlayingCardsPage/Model/Provider/GameStateProvider.dart';
+import 'package:high_and_low/PlayingCardsPage/Model/Provider/TimesOfBackProvider.dart';
 import 'package:high_and_low/constants.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
