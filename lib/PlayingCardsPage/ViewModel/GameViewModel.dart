@@ -14,20 +14,20 @@ class GameViewModel {
     _resetGameState();
   }
 
-  void insertJoker(bool isUsedJoker) {
-    _ref.read(isUsedJokerProvider.notifier).state = isUsedJoker;
-  }
-
   void flip() {
-    _ref.read(timesOfBackProvider.notifier).subtract();
+    _subtractBackTimes();
     _putCardOnField();
     _updateGameState();
   }
 
   void back() {
-    _ref.read(timesOfBackProvider.notifier).add();
+    _addBackTimes();
     _putCardOnDeck();
     _updateGameState();
+  }
+
+  void insertJoker(bool isUsedJoker) {
+    _ref.read(isUsedJokerProvider.notifier).state = isUsedJoker;
   }
 
   void _resetCards() {
@@ -52,6 +52,14 @@ class GameViewModel {
         !_ref.read(cardsDeckProvider).isEmpty;
     _ref.read(isVisibleBackButtonProvider.notifier).state =
         !_ref.read(fieldCardsProvider).isEmpty;
+  }
+
+  void _subtractBackTimes() {
+    _ref.read(timesOfBackProvider.notifier).subtract();
+  }
+
+  void _addBackTimes() {
+    _ref.read(timesOfBackProvider.notifier).add();
   }
 
   void _putCardOnField() {
