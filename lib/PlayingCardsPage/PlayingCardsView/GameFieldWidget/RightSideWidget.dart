@@ -30,7 +30,7 @@ class RightSideWidget extends HookConsumerWidget {
             Switch(
               value: _isUsedJokerState,
               onChanged: (e) {
-                _gameViewModel.insertJoker(e);
+                _gameViewModel.settingJoker(e);
                 _gameViewModel.reset();
                 _showAdByResetNotifier.showAdByReset();
               },

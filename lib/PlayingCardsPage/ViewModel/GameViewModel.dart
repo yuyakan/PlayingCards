@@ -9,25 +9,10 @@ class GameViewModel {
   final WidgetRef _ref;
   GameViewModel(this._ref);
 
+  //山札を準備し直す. Game時の設定もジョーカーの有無に合わせてリセットする.
   void reset() {
     _resetCards();
     _resetGameState();
-  }
-
-  void flip() {
-    _subtractBackTimes();
-    _putCardOnField();
-    _updateGameState();
-  }
-
-  void back() {
-    _addBackTimes();
-    _putCardOnDeck();
-    _updateGameState();
-  }
-
-  void insertJoker(bool isUsedJoker) {
-    _ref.read(isUsedJokerProvider.notifier).state = isUsedJoker;
   }
 
   void _resetCards() {
@@ -45,6 +30,23 @@ class GameViewModel {
     _ref.read(isVisibleOpenButtonProvider.notifier).state = true;
   }
 
+  //山札からカードをめくる.
+  void flip() {
+    _subtractBackTimes();
+    _putCardOnField();
+    _updateGameState();
+  }
+
+  void _subtractBackTimes() {
+    _ref.read(timesOfBackProvider.notifier).subtract();
+  }
+
+  void _putCardOnDeck() {
+    _ref
+        .read(cardsDeckProvider.notifier)
+        .stackOnTop(_ref.read(fieldCardsProvider.notifier).removeTop());
+  }
+
   void _updateGameState() {
     _ref.read(cardImageProvider.notifier).state =
         _ref.read(fieldCardsProvider.notifier).topCard();
@@ -54,8 +56,11 @@ class GameViewModel {
         !_ref.read(fieldCardsProvider).isEmpty;
   }
 
-  void _subtractBackTimes() {
-    _ref.read(timesOfBackProvider.notifier).subtract();
+  //場のカードを一枚戻す.
+  void back() {
+    _addBackTimes();
+    _putCardOnDeck();
+    _updateGameState();
   }
 
   void _addBackTimes() {
@@ -68,9 +73,8 @@ class GameViewModel {
         .add(_ref.read(cardsDeckProvider.notifier).drow());
   }
 
-  void _putCardOnDeck() {
-    _ref
-        .read(cardsDeckProvider.notifier)
-        .stackOnTop(_ref.read(fieldCardsProvider.notifier).removeTop());
+  //ジョーカーの有無を設定する.
+  void settingJoker(bool isUsedJoker) {
+    _ref.read(isUsedJokerProvider.notifier).state = isUsedJoker;
   }
 }
