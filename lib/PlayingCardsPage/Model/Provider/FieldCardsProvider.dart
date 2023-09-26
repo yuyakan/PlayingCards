@@ -1,4 +1,4 @@
-import 'package:high_and_low/PlayingCardsPage/Card.dart';
+import 'package:high_and_low/PlayingCardsPage/Model/Card.dart';
 import 'package:high_and_low/constants.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

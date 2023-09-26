@@ -1,7 +1,7 @@
-import 'package:high_and_low/PlayingCardsPage/Provider/CardsDeckProvider.dart';
-import 'package:high_and_low/PlayingCardsPage/Provider/FieldCardsProvider.dart';
-import 'package:high_and_low/PlayingCardsPage/Provider/GameStateProvider.dart';
-import 'package:high_and_low/PlayingCardsPage/Provider/TimesOfBackProvider.dart';
+import 'package:high_and_low/PlayingCardsPage/Model/Provider/CardsDeckProvider.dart';
+import 'package:high_and_low/PlayingCardsPage/Model/Provider/FieldCardsProvider.dart';
+import 'package:high_and_low/PlayingCardsPage/Model/Provider/GameStateProvider.dart';
+import 'package:high_and_low/PlayingCardsPage/Model/Provider/TimesOfBackProvider.dart';
 import 'package:high_and_low/constants.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -14,20 +14,20 @@ class GameViewModel {
     _resetGameState();
   }
 
-  void insertJoker(bool isUsedJoker) {
-    _ref.read(isUsedJokerProvider.notifier).state = isUsedJoker;
-  }
-
   void flip() {
-    _ref.read(timesOfBackProvider.notifier).subtract();
+    _subtractBackTimes();
     _putCardOnField();
     _updateGameState();
   }
 
   void back() {
-    _ref.read(timesOfBackProvider.notifier).add();
+    _addBackTimes();
     _putCardOnDeck();
     _updateGameState();
+  }
+
+  void insertJoker(bool isUsedJoker) {
+    _ref.read(isUsedJokerProvider.notifier).state = isUsedJoker;
   }
 
   void _resetCards() {
@@ -52,6 +52,14 @@ class GameViewModel {
         !_ref.read(cardsDeckProvider).isEmpty;
     _ref.read(isVisibleBackButtonProvider.notifier).state =
         !_ref.read(fieldCardsProvider).isEmpty;
+  }
+
+  void _subtractBackTimes() {
+    _ref.read(timesOfBackProvider.notifier).subtract();
+  }
+
+  void _addBackTimes() {
+    _ref.read(timesOfBackProvider.notifier).add();
   }
 
   void _putCardOnField() {
