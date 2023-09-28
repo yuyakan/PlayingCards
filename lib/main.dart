@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart' as admob;
 import 'package:high_and_low/Ad/InterstitialAd.dart';
-import 'package:high_and_low/PlayingCardsPage/PlayingCardsView/GameFieldWidget/PlayingCardsView.dart';
+import 'package:high_and_low/PlayingCardsPage/View/GameFieldWidget/PlayingCardsView.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 Future<void> main() async {
