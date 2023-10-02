@@ -1,80 +1,35 @@
-import 'package:high_and_low/PlayingCardsPage/Model/CardsDeck/CardsDeckProvider.dart';
-import 'package:high_and_low/PlayingCardsPage/Model/FieldsCards/FieldCardsProvider.dart';
-import 'package:high_and_low/PlayingCardsPage/Model/GameState/GameStateProvider.dart';
-import 'package:high_and_low/PlayingCardsPage/Model/TimesOfBack/TimesOfBackProvider.dart';
-import 'package:high_and_low/constants.dart';
+import 'package:high_and_low/Ad/ShowAdProvider/ShowAdByBackProvider.dart';
+import 'package:high_and_low/Ad/ShowAdProvider/ShowAdByResetProvider.dart';
+import 'package:high_and_low/PlayingCardsPage/Model/GameOperation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class GameViewModel {
-  final WidgetRef _ref;
-  GameViewModel(this._ref);
+  final GameOperation _gameOperation;
+  final ShowAdByReset _showAdByResetNotifier;
+  final ShowAdByBack _showAdByBackNotifier;
 
-  //山札を準備し直す. Game時の設定もジョーカーの有無に合わせてリセットする.
+  GameViewModel(WidgetRef ref)
+      : _gameOperation = GameOperation(ref),
+        _showAdByResetNotifier = ref.watch(showAdByResetProvider.notifier),
+        _showAdByBackNotifier = ref.watch(showAdByBackProvider.notifier);
+
   void reset() {
-    _resetCards();
-    _resetGameState();
+    _gameOperation.reset();
+    _showAdByResetNotifier.showAdByReset();
   }
 
-  void _resetCards() {
-    _ref.read(fieldCardsProvider.notifier).reset();
-    _ref.read(cardsDeckProvider.notifier).reset();
-    _ref.read(cardImageProvider.notifier).state = EMPTY_CARD;
-    _ref
-        .read(cardsDeckProvider.notifier)
-        .insertJoker(_ref.read(isUsedJokerProvider.notifier).state);
+  void openAndNext() {
+    _gameOperation.flip();
   }
 
-  void _resetGameState() {
-    _ref.read(timesOfBackProvider.notifier).reset();
-    _ref.read(isVisibleBackButtonProvider.notifier).state = false;
-    _ref.read(isVisibleOpenButtonProvider.notifier).state = true;
-  }
-
-  //山札からカードをめくる.
-  void flip() {
-    _subtractBackTimes();
-    _putCardOnField();
-    _updateGameState();
-  }
-
-  void _subtractBackTimes() {
-    _ref.read(timesOfBackProvider.notifier).subtract();
-  }
-
-  void _putCardOnDeck() {
-    _ref
-        .read(cardsDeckProvider.notifier)
-        .stackOnTop(_ref.read(fieldCardsProvider.notifier).removeTop());
-  }
-
-  void _updateGameState() {
-    _ref.read(cardImageProvider.notifier).state =
-        _ref.read(fieldCardsProvider.notifier).topCard();
-    _ref.read(isVisibleOpenButtonProvider.notifier).state =
-        !_ref.read(cardsDeckProvider).isEmpty;
-    _ref.read(isVisibleBackButtonProvider.notifier).state =
-        !_ref.read(fieldCardsProvider).isEmpty;
-  }
-
-  //場のカードを一枚戻す.
   void back() {
-    _addBackTimes();
-    _putCardOnDeck();
-    _updateGameState();
+    _gameOperation.back();
+    _showAdByBackNotifier.showAdByBack();
   }
 
-  void _addBackTimes() {
-    _ref.read(timesOfBackProvider.notifier).add();
-  }
-
-  void _putCardOnField() {
-    _ref
-        .read(fieldCardsProvider.notifier)
-        .add(_ref.read(cardsDeckProvider.notifier).drow());
-  }
-
-  //ジョーカーの有無を設定する.
-  void settingJoker(bool isUsedJoker) {
-    _ref.read(isUsedJokerProvider.notifier).state = isUsedJoker;
+  void jokerTogle(bool isUsedJoker) {
+    _gameOperation.settingJoker(isUsedJoker);
+    _gameOperation.reset();
+    _showAdByResetNotifier.showAdByReset();
   }
 }
