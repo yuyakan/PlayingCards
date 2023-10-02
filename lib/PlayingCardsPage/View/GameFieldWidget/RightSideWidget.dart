@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:high_and_low/Ad/ShowAdProvider/ShowAdByResetProvider.dart';
-import 'package:high_and_low/PlayingCardsPage/Model/Provider/GameStateProvider.dart';
-import 'package:high_and_low/PlayingCardsPage/Model/Provider/TimesOfBackProvider.dart';
+import 'package:high_and_low/PlayingCardsPage/Model/GameState/GameStateProvider.dart';
+import 'package:high_and_low/PlayingCardsPage/Model/TimesOfBack/TimesOfBackProvider.dart';
 import 'package:high_and_low/PlayingCardsPage/ViewModel/GameViewModel.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
