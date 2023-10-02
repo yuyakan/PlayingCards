@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:high_and_low/Ad/ShowAdProvider/ShowAdByBackProvider.dart';
-import 'package:high_and_low/Ad/ShowAdProvider/ShowAdByResetProvider.dart';
-import 'package:high_and_low/PlayingCardsPage/Model/Provider/FieldCardsProvider.dart';
-import 'package:high_and_low/PlayingCardsPage/Model/Provider/GameStateProvider.dart';
+import 'package:high_and_low/PlayingCardsPage/Model/FieldsCards/FieldCardsProvider.dart';
+import 'package:high_and_low/PlayingCardsPage/Model/GameState/GameStateProvider.dart';
 import 'package:high_and_low/PlayingCardsPage/ViewModel/GameViewModel.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -14,8 +12,6 @@ class LeftSideWidget extends HookConsumerWidget {
 
     final _ = ref.watch(fieldCardsProvider);
     final _isVisibleBackButtonState = ref.watch(isVisibleBackButtonProvider);
-    final _showAdByResetNotifier = ref.watch(showAdByResetProvider.notifier);
-    final _showAdByBackNotifier = ref.watch(showAdByBackProvider.notifier);
 
     return SizedBox(
       width: size.width * 0.2,
@@ -24,7 +20,6 @@ class LeftSideWidget extends HookConsumerWidget {
         MaterialButton(
           onPressed: () {
             _gameViewModel.reset();
-            _showAdByResetNotifier.showAdByReset();
           },
           child: Text("Reset", style: TextStyle(fontSize: size.width * 0.03)),
           padding: EdgeInsets.all(size.width * 0.03),
@@ -40,7 +35,6 @@ class LeftSideWidget extends HookConsumerWidget {
             child: MaterialButton(
               onPressed: () {
                 _gameViewModel.back();
-                _showAdByBackNotifier.showAdByBack();
               },
               child:
                   Text("Back", style: TextStyle(fontSize: size.width * 0.03)),

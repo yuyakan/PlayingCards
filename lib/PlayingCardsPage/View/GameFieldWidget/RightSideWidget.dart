@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:high_and_low/Ad/ShowAdProvider/ShowAdByResetProvider.dart';
-import 'package:high_and_low/PlayingCardsPage/Model/Provider/GameStateProvider.dart';
-import 'package:high_and_low/PlayingCardsPage/Model/Provider/TimesOfBackProvider.dart';
+import 'package:high_and_low/PlayingCardsPage/Model/GameState/GameStateProvider.dart';
+import 'package:high_and_low/PlayingCardsPage/Model/TimesOfBack/TimesOfBackProvider.dart';
 import 'package:high_and_low/PlayingCardsPage/ViewModel/GameViewModel.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -14,7 +13,6 @@ class RightSideWidget extends HookConsumerWidget {
     final _isUsedJokerState = ref.watch(isUsedJokerProvider);
     final _timesOfBackState = ref.watch(timesOfBackProvider);
     final _isVisibleOpenButtonState = ref.watch(isVisibleOpenButtonProvider);
-    final _showAdByResetNotifier = ref.watch(showAdByResetProvider.notifier);
     return SizedBox(
       width: size.width * 0.2,
       child:
@@ -30,9 +28,7 @@ class RightSideWidget extends HookConsumerWidget {
             Switch(
               value: _isUsedJokerState,
               onChanged: (e) {
-                _gameViewModel.settingJoker(e);
-                _gameViewModel.reset();
-                _showAdByResetNotifier.showAdByReset();
+                _gameViewModel.jokerTogle(e);
               },
             ),
           ],
@@ -44,7 +40,7 @@ class RightSideWidget extends HookConsumerWidget {
             maintainAnimation: true,
             child: MaterialButton(
               onPressed: () {
-                _gameViewModel.flip();
+                _gameViewModel.openAndNext();
               },
               child: Text(_timesOfBackState == 0 ? "Open" : "Next",
                   style: TextStyle(fontSize: size.width * 0.03)),

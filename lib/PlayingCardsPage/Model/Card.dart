@@ -1,25 +1,31 @@
 class Card {
+  static const int _TOTAL_OF_ONE_MARK = 13;
+  static const String _DIAMOND = "D";
+  static const String _HEART = "H";
+  static const String _CLUB = "K";
+  static const String _SPADE = "S";
+  static const String _JOKER = "JOKER";
   final int id;
 
   const Card(this.id);
 
   String mark() {
-    switch ((id ~/ 13) + 1) {
+    switch ((id ~/ _TOTAL_OF_ONE_MARK) + 1) {
       case 1:
-        return "D";
+        return _DIAMOND;
       case 2:
-        return "H";
+        return _HEART;
       case 3:
-        return "K";
+        return _CLUB;
       case 4:
-        return "S";
+        return _SPADE;
       case 5:
-        return "JOKER";
+        return _JOKER;
     }
     throw Error();
   }
 
   int number() {
-    return id % 13 + 1;
+    return id % _TOTAL_OF_ONE_MARK + 1;
   }
 }

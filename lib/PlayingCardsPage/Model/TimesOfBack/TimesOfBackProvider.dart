@@ -4,22 +4,23 @@ part 'TimesOfBackProvider.g.dart';
 
 @riverpod
 class TimesOfBack extends _$TimesOfBack {
+  static const _INITIAL_VALUE = 0;
   @override
   int build() {
-    return 0;
+    return _INITIAL_VALUE;
   }
 
   void reset() {
-    state = 0;
+    state = _INITIAL_VALUE;
   }
 
   void add() {
-    state += 1;
+    state++;
   }
 
   void subtract() {
-    if (state != 0) {
-      state -= 1;
+    if (state != _INITIAL_VALUE) {
+      state--;
     }
   }
 }
