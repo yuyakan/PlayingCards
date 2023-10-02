@@ -4,20 +4,23 @@ part 'CardsDeckProvider.g.dart';
 
 @riverpod
 class CardsDeck extends _$CardsDeck {
+  static const int _TOTAL_NUMBER = 52;
+  static const List<int> _JOKERS = [52, 53];
+
   @override
   List<int> build() {
-    var _cards = List.generate(52, (i) => i);
+    var _cards = List.generate(_TOTAL_NUMBER, (i) => i);
     _cards.shuffle();
     return _cards;
   }
 
   void reset() {
-    state = List.generate(52, (i) => i);
+    state = List.generate(_TOTAL_NUMBER, (i) => i);
   }
 
   void insertJoker(bool isUsedJoker) {
     if (isUsedJoker) {
-      state = [...state, 52, 53];
+      state = [...state, ..._JOKERS];
     }
     state.shuffle();
   }
