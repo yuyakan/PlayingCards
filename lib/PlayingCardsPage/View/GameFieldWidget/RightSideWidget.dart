@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:high_and_low/Ad/ShowAdProvider/ShowAdByResetProvider.dart';
 import 'package:high_and_low/PlayingCardsPage/Model/GameState/GameStateProvider.dart';
 import 'package:high_and_low/PlayingCardsPage/Model/TimesOfBack/TimesOfBackProvider.dart';
 import 'package:high_and_low/PlayingCardsPage/ViewModel/GameViewModel.dart';
@@ -10,6 +11,7 @@ class RightSideWidget extends HookConsumerWidget {
     final _gameViewModel = GameViewModel(ref);
     final Size size = MediaQuery.of(context).size;
 
+    final _showAdByResetNotifier = ref.watch(showAdByResetProvider.notifier);
     final _isUsedJokerState = ref.watch(isUsedJokerProvider);
     final _timesOfBackState = ref.watch(timesOfBackProvider);
     final _isVisibleOpenButtonState = ref.watch(isVisibleOpenButtonProvider);
@@ -29,6 +31,7 @@ class RightSideWidget extends HookConsumerWidget {
               value: _isUsedJokerState,
               onChanged: (e) {
                 _gameViewModel.jokerTogle(e);
+                _showAdByResetNotifier.showAdByReset();
               },
             ),
           ],
