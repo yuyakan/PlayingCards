@@ -33,7 +33,7 @@ class GameFieldWidget extends HookConsumerWidget {
         ),
         Stack(children: [
           Image.asset(
-            EMPTY_CARD,
+            BACK_OF_FIELD,
             width: size.width * 0.25,
           ),
           Image.asset(

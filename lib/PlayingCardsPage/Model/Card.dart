@@ -5,12 +5,16 @@ class Card {
   static const String _CLUB = "K";
   static const String _SPADE = "S";
   static const String _JOKER = "JOKER";
-  final int id;
+  final int _id;
 
-  const Card(this.id);
+  Card(int id) : this._id = id {
+    if (_id > 53 || _id < 0) {
+      throw ArgumentError("number is mistake");
+    }
+  }
 
   String mark() {
-    switch ((id ~/ _TOTAL_OF_ONE_MARK) + 1) {
+    switch ((_id ~/ _TOTAL_OF_ONE_MARK) + 1) {
       case 1:
         return _DIAMOND;
       case 2:
@@ -26,6 +30,6 @@ class Card {
   }
 
   int number() {
-    return id % _TOTAL_OF_ONE_MARK + 1;
+    return _id % _TOTAL_OF_ONE_MARK + 1;
   }
 }

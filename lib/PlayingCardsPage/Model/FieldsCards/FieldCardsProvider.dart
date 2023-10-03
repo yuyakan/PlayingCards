@@ -20,6 +20,9 @@ class FieldCards extends _$FieldCards {
   }
 
   int removeTop() {
+    if (isEmpty()) {
+      throw Error();
+    }
     return state.removeLast();
   }
 

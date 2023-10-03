@@ -26,6 +26,9 @@ class CardsDeck extends _$CardsDeck {
   }
 
   int drow() {
+    if (isEmpty()) {
+      throw Error();
+    }
     return state.removeLast();
   }
 
