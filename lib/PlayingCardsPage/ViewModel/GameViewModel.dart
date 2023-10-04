@@ -2,9 +2,9 @@ import 'package:high_and_low/PlayingCardsPage/Model/GameOperation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class GameViewModel {
-  final GameOperation _gameOperation;
+  final GameViewOperation _gameOperation;
 
-  GameViewModel(WidgetRef ref) : _gameOperation = GameOperation(ref);
+  GameViewModel(WidgetRef ref) : _gameOperation = GameAction(ref);
 
   void reset() {
     _gameOperation.reset();

@@ -5,9 +5,16 @@ import 'package:high_and_low/PlayingCardsPage/Model/TimesOfBack/TimesOfBackProvi
 import 'package:high_and_low/constants.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class GameOperation {
+abstract class GameViewOperation {
+  void reset() {}
+  void flip() {}
+  void back() {}
+  void settingJoker(bool isUsedJoker) {}
+}
+
+class GameAction implements GameViewOperation {
   final WidgetRef _ref;
-  GameOperation(this._ref);
+  GameAction(this._ref);
 
   //山札を準備し直す. Game時の設定もジョーカーの有無に合わせてリセットする.
   void reset() {
