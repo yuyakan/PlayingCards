@@ -10,7 +10,7 @@ class LeftSideWidget extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final _gameViewModel = GameViewModel(ref);
-    final Size size = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
 
     final _ = ref.watch(fieldCardsProvider);
     final _showAdByResetNotifier = ref.watch(showAdByResetProvider.notifier);

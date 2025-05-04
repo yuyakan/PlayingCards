@@ -9,7 +9,7 @@ class RightSideWidget extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final _gameViewModel = GameViewModel(ref);
-    final Size size = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
 
     final _showAdByResetNotifier = ref.watch(showAdByResetProvider.notifier);
     final _isUsedJokerState = ref.watch(isUsedJokerProvider);
