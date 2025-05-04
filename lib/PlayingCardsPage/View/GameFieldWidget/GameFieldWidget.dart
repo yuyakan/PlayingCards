@@ -9,7 +9,7 @@ class GameFieldWidget extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final _cardImageState = ref.watch(cardImageProvider);
     final _cardsDeckState = ref.watch(cardsDeckProvider);
-    final Size size = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
     return Row(
       children: [
         Stack(children: [
