@@ -15,6 +15,15 @@ class InterstitialAd {
   /// The count of load attempt
   int _countLoadAttempt = 0;
 
+  /// 取得失敗時にリトライする最大回数。
+  static const int _maxLoadAttempt = 5;
+
+  /// 指数バックオフの待機時間の上限（秒）。
+  static const int _maxBackoffSeconds = 32;
+
+  /// 2 の [exponent] 乗を返す（指数バックオフの待機秒数の計算に使用）。
+  int _pow2(final int exponent) => 1 << exponent;
+
   /// The interstitial ad
   admob.InterstitialAd? _interstitialAd;
 
@@ -40,7 +49,11 @@ class InterstitialAd {
             _interstitialAd = null;
             _countLoadAttempt++;
 
-            if (_countLoadAttempt <= 5) {
+            if (_countLoadAttempt <= _maxLoadAttempt) {
+              // 指数バックオフ: 2^n 秒（上限あり）待ってから再取得する。
+              final waitSeconds =
+                  _pow2(_countLoadAttempt).clamp(1, _maxBackoffSeconds);
+              await Future<void>.delayed(Duration(seconds: waitSeconds));
               await load();
             }
           },
