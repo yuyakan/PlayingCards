@@ -11,7 +11,7 @@ const String _lastReviewRequestKey = 'lastReviewRequestAt';
 const Duration _minElapsedSinceFirstLaunch = Duration(seconds: 60);
 
 /// 前回リクエストから次にリクエストできるようになるまでの最小間隔。
-const Duration _minIntervalBetweenRequests = Duration(minutes: 30);
+const Duration _minIntervalBetweenRequests = Duration(minutes: 20);
 
 /// アプリの初回起動時刻を記録する（未記録のときだけ保存）。
 /// アプリ起動時（main）に呼ぶことで、「インストール後に初めて起動した瞬間」を起点にする。
@@ -35,7 +35,7 @@ void showDialog() async {
     return;
   }
 
-  // ガード2: 前回リクエストから 30 分以上経過しているか。
+  // ガード2: 前回リクエストから 20 分以上経過しているか。
   final int? lastRequestMillis = prefs.getInt(_lastReviewRequestKey);
   if (lastRequestMillis != null &&
       nowMillis - lastRequestMillis <
