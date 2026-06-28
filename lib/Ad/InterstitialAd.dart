@@ -41,10 +41,9 @@ class InterstitialAd {
   bool get isNotLoaded => _interstitialAd == null;
 
   Future<void> load() async => await admob.InterstitialAd.load(
-        // テスト広告を表示（現在有効）
-        adUnitId: Platform.isAndroid ? ANDROID_TEST_AD_KEY : IOS_TEST_AD_KEY,
-        // 本番広告を表示する場合は上をコメントアウトし、下を有効化する
-        // adUnitId: Platform.isAndroid ? ANDROID_AD_KEY : IOS_AD_KEY,
+        // iOS は本番広告、Android はテスト広告を表示する。
+        // （Android の本番 ID は未設定のため、本番化しない）
+        adUnitId: Platform.isAndroid ? ANDROID_TEST_AD_KEY : IOS_AD_KEY,
 
         request: const admob.AdRequest(),
         adLoadCallback: admob.InterstitialAdLoadCallback(
