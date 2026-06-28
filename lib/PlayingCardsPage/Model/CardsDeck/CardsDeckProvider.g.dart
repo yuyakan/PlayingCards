@@ -6,7 +6,7 @@ part of 'CardsDeckProvider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$cardsDeckHash() => r'ff56433394abbef22c31a1b9d6db431890514edf';
+String _$cardsDeckHash() => r'9cdb36b5e5304b80fcb2f00d8df08354fa9ee9ed';
 
 /// See also [CardsDeck].
 @ProviderFor(CardsDeck)

@@ -6,7 +6,7 @@ part of 'FieldCardsProvider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$fieldCardsHash() => r'2aced41a3aa5a768a78d001281797c49e75a4169';
+String _$fieldCardsHash() => r'bc1376ec3759c34755422db56ee1c9cd21d5b232';
 
 /// See also [FieldCards].
 @ProviderFor(FieldCards)
