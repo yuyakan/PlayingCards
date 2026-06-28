@@ -1,14 +1,30 @@
 import 'package:high_and_low/Ad/InterstitialAd.dart';
 import 'package:high_and_low/ReviewDialog/ShowDialog.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'ShowAdByResetProvider.g.dart';
 
 @Riverpod(keepAlive: true)
 class ShowAdByReset extends _$ShowAdByReset {
+  /// SharedPreferences に保存するキー。
+  static const String _prefsKey = 'showAdByResetCounter';
+
   @override
   int build() {
+    // 初期値は 0 を返しつつ、保存済みのカウンタを非同期で読み込んで反映する。
+    _loadCounter();
     return 0;
+  }
+
+  Future<void> _loadCounter() async {
+    final prefs = await SharedPreferences.getInstance();
+    state = prefs.getInt(_prefsKey) ?? 0;
+  }
+
+  Future<void> _saveCounter() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(_prefsKey, state);
   }
 
   void showAdByReset() {
@@ -16,6 +32,7 @@ class ShowAdByReset extends _$ShowAdByReset {
     if (state > 1) {
       _showInterstitialAd();
       state = 0;
+      _saveCounter();
       return;
     }
     showDialog();
@@ -23,6 +40,7 @@ class ShowAdByReset extends _$ShowAdByReset {
 
   void _addTimesOfReset() {
     state += 1;
+    _saveCounter();
   }
 
   void _showInterstitialAd() {

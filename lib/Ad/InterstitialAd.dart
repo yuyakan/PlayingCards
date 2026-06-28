@@ -24,6 +24,13 @@ class InterstitialAd {
   /// 2 の [exponent] 乗を返す（指数バックオフの待機秒数の計算に使用）。
   int _pow2(final int exponent) => 1 << exponent;
 
+  /// 2回目以降の広告を表示するまでに必要な、前回表示からの最小間隔。
+  static const Duration _minShowInterval = Duration(seconds: 90);
+
+  /// 直近で広告を表示した時刻。アプリ起動中のみメモリに保持し、
+  /// アプリを終了すると失われる（次回起動時は 1 回目として扱う）。
+  DateTime? _lastShownAt;
+
   /// The interstitial ad
   admob.InterstitialAd? _interstitialAd;
 
@@ -61,6 +68,14 @@ class InterstitialAd {
       );
 
   Future<void> show() async {
+    // 2回目以降は、前回表示から _minShowInterval 経過していなければ表示しない。
+    // （初回は _lastShownAt が null のため、このガードを通過する）
+    final lastShownAt = _lastShownAt;
+    if (lastShownAt != null &&
+        DateTime.now().difference(lastShownAt) < _minShowInterval) {
+      return;
+    }
+
     if (isNotLoaded) {
       await load();
     }
@@ -85,6 +100,8 @@ class InterstitialAd {
         },
       );
 
+      // 表示時刻を記録してから表示する（次回以降の間隔ガードに使用）。
+      _lastShownAt = DateTime.now();
       await _interstitialAd!.show();
     }
   }
