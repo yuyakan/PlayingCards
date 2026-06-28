@@ -3,7 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'ShowAdByBackProvider.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class ShowAdByBack extends _$ShowAdByBack {
   @override
   int build() {

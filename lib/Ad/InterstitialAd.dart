@@ -25,9 +25,9 @@ class InterstitialAd {
   bool get isNotLoaded => _interstitialAd == null;
 
   Future<void> load() async => await admob.InterstitialAd.load(
-        // test用
+        // テスト広告を表示（現在有効）
         adUnitId: Platform.isAndroid ? ANDROID_TEST_AD_KEY : IOS_TEST_AD_KEY,
-        // 本番用
+        // 本番広告を表示する場合は上をコメントアウトし、下を有効化する
         // adUnitId: Platform.isAndroid ? ANDROID_AD_KEY : IOS_AD_KEY,
 
         request: const admob.AdRequest(),
@@ -55,21 +55,24 @@ class InterstitialAd {
     if (isLoaded) {
       _interstitialAd!.fullScreenContentCallback =
           admob.FullScreenContentCallback(
-        onAdShowedFullScreenContent: (final interstitialAd) {},
         onAdDismissedFullScreenContent: (final interstitialAd) async {
           await interstitialAd.dispose();
+          _interstitialAd = null;
+
+          /// Load next ad.
+          await load();
         },
         onAdFailedToShowFullScreenContent:
             (final interstitialAd, final adError) async {
           await interstitialAd.dispose();
+          _interstitialAd = null;
+
+          /// Load next ad.
+          await load();
         },
       );
 
       await _interstitialAd!.show();
-      _interstitialAd = null;
-
-      /// Load next ad.
-      await load();
     }
   }
 }

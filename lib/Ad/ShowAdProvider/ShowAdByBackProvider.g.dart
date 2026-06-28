@@ -6,12 +6,11 @@ part of 'ShowAdByBackProvider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$showAdByBackHash() => r'e118816260a0466c8d38ba51f8af31fe9a94c462';
+String _$showAdByBackHash() => r'e5fdc0f255e1a696752adab4fd848795363f8214';
 
 /// See also [ShowAdByBack].
 @ProviderFor(ShowAdByBack)
-final showAdByBackProvider =
-    AutoDisposeNotifierProvider<ShowAdByBack, int>.internal(
+final showAdByBackProvider = NotifierProvider<ShowAdByBack, int>.internal(
   ShowAdByBack.new,
   name: r'showAdByBackProvider',
   debugGetCreateSourceHash:
@@ -20,6 +19,6 @@ final showAdByBackProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$ShowAdByBack = AutoDisposeNotifier<int>;
+typedef _$ShowAdByBack = Notifier<int>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

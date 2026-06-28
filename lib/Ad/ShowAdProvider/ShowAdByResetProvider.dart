@@ -4,7 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'ShowAdByResetProvider.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class ShowAdByReset extends _$ShowAdByReset {
   @override
   int build() {
