@@ -6,7 +6,7 @@ part of 'TimesOfBackProvider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$timesOfBackHash() => r'c98347492c93ace3b62bb0b2525f18b4540aab1f';
+String _$timesOfBackHash() => r'4ba7e3d417714546b479367ae0e123e6154dbd9f';
 
 /// See also [TimesOfBack].
 @ProviderFor(TimesOfBack)

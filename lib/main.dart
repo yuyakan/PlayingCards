@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart' as admob;
 import 'package:high_and_low/Ad/InterstitialAd.dart';
+import 'package:high_and_low/ReviewDialog/ShowDialog.dart';
 import 'package:high_and_low/PlayingCardsPage/View/PlayingCardsView.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -13,6 +14,7 @@ Future<void> main() async {
   ]);
   await admob.MobileAds.instance.initialize();
   await InterstitialAd.instance.load();
+  await recordFirstLaunchIfNeeded();
 
   runApp(ProviderScope(child: const MyApp()));
 }

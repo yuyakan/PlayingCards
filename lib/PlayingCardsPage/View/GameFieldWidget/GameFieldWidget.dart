@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:high_and_low/PlayingCardsPage/Model/CardsDeck/CardsDeckProvider.dart';
 import 'package:high_and_low/PlayingCardsPage/Model/GameState/GameStateProvider.dart';
+import 'package:high_and_low/PlayingCardsPage/ViewModel/GameViewModel.dart';
 import 'package:high_and_low/constants.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class GameFieldWidget extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final _gameViewModel = GameViewModel(ref);
     final _cardImageState = ref.watch(cardImageProvider);
     final _cardsDeckState = ref.watch(cardsDeckProvider);
+    final _isVisibleOpenButtonState = ref.watch(isVisibleOpenButtonProvider);
     final size = MediaQuery.of(context).size;
     return Row(
       children: [
@@ -22,9 +25,14 @@ class GameFieldWidget extends HookConsumerWidget {
             maintainSize: true,
             maintainState: true,
             maintainAnimation: true,
-            child: Image.asset(
-              BACK_OF_CARDS,
-              width: size.width * 0.25,
+            child: GestureDetector(
+              onTap: _isVisibleOpenButtonState
+                  ? () => _gameViewModel.openAndNext()
+                  : null,
+              child: Image.asset(
+                BACK_OF_CARDS,
+                width: size.width * 0.25,
+              ),
             ),
           ),
         ]),
