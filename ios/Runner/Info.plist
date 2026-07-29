@@ -271,5 +271,7 @@
 		<true/>
 		<key>UIStatusBarHidden</key>
 		<true/>
+		<key>NSUserTrackingUsageDescription</key>
+		<string>This identifier will be used to deliver personalized ads to you.</string>
 	</dict>
 </plist>
