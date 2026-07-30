@@ -13,13 +13,26 @@ Future<void> main() async {
     DeviceOrientation.landscapeLeft,
     DeviceOrientation.landscapeRight,
   ]);
-  // UMP同意フローとATTの許可取得を、AdMob初期化より前に行う。
+
+  // 先に UI を起動してフォーカス可能なウィンドウを即座に確立する。
+  // 同意フローや広告初期化を待ってから runApp すると、その間ウィンドウが
+  // 存在せず「Input dispatching timed out (No focused window)」による
+  // ANR を招くため、重い初期化は UI 表示後にバックグラウンドで行う。
+  runApp(ProviderScope(child: const MyApp()));
+
+  await _initializeAds();
+}
+
+/// 同意フローと広告の初期化を行う。
+///
+/// 順序は「UMP同意フロー → ATT → AdMob初期化 → 広告ロード」を守ること。
+/// この順序を崩すと ATT の許諾状態が広告リクエストに反映されない。
+/// UI 表示をブロックしないよう、[main] では runApp の後に呼び出す。
+Future<void> _initializeAds() async {
   await TrackingConsent.instance.request();
   await admob.MobileAds.instance.initialize();
   await InterstitialAd.instance.load();
   await recordFirstLaunchIfNeeded();
-
-  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
