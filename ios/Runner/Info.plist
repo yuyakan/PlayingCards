@@ -272,6 +272,6 @@
 		<key>UIStatusBarHidden</key>
 		<true/>
 		<key>NSUserTrackingUsageDescription</key>
-		<string>This identifier will be used to deliver personalized ads to you.</string>
+		<string>Allowing tracking lets us use your device's advertising identifier to show ads that are more relevant to your interests instead of generic ones. For example, you may see ads related to games or hobbies rather than random, unrelated ads.</string>
 	</dict>
 </plist>
